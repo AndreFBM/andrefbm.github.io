@@ -6,7 +6,7 @@
     <title>André Monteiro | Data Engineer</title>
     <meta
       name="description"
-      content="André Monteiro is a Lisbon-based Data Engineer focused on Python, SQL, ETL pipelines, integrations, APIs, FTP, and operational automation."
+      content="André Monteiro is a Data Engineer focused on Python, SQL, ETL pipelines, integrations, APIs, FTP, and operational automation."
     />
     <meta property="og:title" content="André Monteiro | Data Engineer" />
     <meta
@@ -18,6 +18,15 @@
     <meta property="og:url" content="https://andrefbm.github.io" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Prevent dark-mode flash -->
+    <script>
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    </script>
     <script defer src="script.js"></script>
     <script type="application/ld+json">
       {
@@ -49,6 +58,7 @@
     </script>
   </head>
   <body>
+    <div class="progress-bar" data-progress aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-header>
       <nav class="nav" aria-label="Primary navigation">
@@ -62,6 +72,20 @@
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
+        <button
+          class="dark-toggle"
+          data-dark-toggle
+          type="button"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+        >
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 17a5 5 0 100-10 5 5 0 000 10zm0-13a1 1 0 011 1v1a1 1 0 11-2 0V5a1 1 0 011-1zm0 14a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.636 6.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zm12.02 10.607a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 12a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm14 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM6.343 15.757a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zm10.607-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0z"/>
+          </svg>
+        </button>
       </nav>
     </header>
 
@@ -70,11 +94,12 @@
         <picture class="hero-media">
           <img
             src="assets/hero-data-lisbon.png"
-            alt="Abstract Lisbon-inspired data routes and system connections"
+            alt="Abstract data routes and system connections"
             loading="eager"
           />
         </picture>
         <div class="hero-scrim" aria-hidden="true"></div>
+        <canvas class="hero-canvas" data-hero-canvas aria-hidden="true"></canvas>
         <div class="hero-inner">
           <p class="eyebrow">Data Engineer</p>
           <h1 id="hero-title">André Monteiro</h1>
@@ -98,18 +123,18 @@
             </div>
             <div>
               <dt>Built</dt>
-              <dd>20+ ETL pipelines</dd>
+              <dd><span data-counter="20" data-counter-suffix="+">20</span>+ ETL pipelines</dd>
             </div>
             <div>
               <dt>Integrated</dt>
-              <dd>15+ partners</dd>
+              <dd><span data-counter="15" data-counter-suffix="+">15</span>+ partners</dd>
             </div>
           </dl>
         </div>
       </section>
 
       <section class="section intro-band" aria-labelledby="intro-title">
-        <div class="section-inner intro-grid">
+        <div class="section-inner intro-grid" data-reveal>
           <div>
             <p class="eyebrow dark">Profile</p>
             <h2 id="intro-title">Practical data engineering for messy real-world systems.</h2>
@@ -124,22 +149,22 @@
 
       <section class="section" id="work" aria-labelledby="work-title">
         <div class="section-inner">
-          <div class="section-heading">
+          <div class="section-heading" data-reveal>
             <p class="eyebrow dark">Operating Model</p>
             <h2 id="work-title">Where I add leverage</h2>
           </div>
           <div class="flow-grid" aria-label="Data workflow strengths">
-            <article class="flow-card">
+            <article class="flow-card" data-reveal style="--delay: 0s">
               <span class="flow-index">01</span>
               <h3>Partner data intake</h3>
               <p>API, FTP, and scraping workflows that fetch, sync, and normalize external data.</p>
             </article>
-            <article class="flow-card">
+            <article class="flow-card" data-reveal style="--delay: 0.12s">
               <span class="flow-index">02</span>
               <h3>ETL with checks</h3>
               <p>Python and SQL pipelines with validation rules, quality checks, and reliable updates.</p>
             </article>
-            <article class="flow-card">
+            <article class="flow-card" data-reveal style="--delay: 0.24s">
               <span class="flow-index">03</span>
               <h3>Operational consistency</h3>
               <p>Pricing and rule changes coordinated across systems so teams work from the same truth.</p>
@@ -148,9 +173,31 @@
         </div>
       </section>
 
+      <section class="section section-terminal" aria-labelledby="code-title">
+        <div class="section-inner terminal-layout">
+          <div data-reveal>
+            <p class="eyebrow dark">In practice</p>
+            <h2 id="code-title">How data moves.</h2>
+            <p>
+              Fetch, validate, load. Every partner sync follows the same contract — clean intake,
+              explicit rules, reliable writes.
+            </p>
+          </div>
+          <div class="terminal" data-reveal data-terminal style="--delay: 0.14s">
+            <div class="terminal-bar" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <span class="terminal-title">sync_partner.py</span>
+            </div>
+            <div class="terminal-body" role="img" aria-label="Python ETL code example">
+              <span class="line"><span class="cm"># fetch &#x2192; validate &#x2192; load in one clean pass</span></span><span class="line"><span class="kw">def</span> <span class="fn">sync_partner</span>(partner_id: <span class="bi">str</span>) -&gt; <span class="bi">int</span>:</span><span class="line">    raw      = api_client.<span class="fn">fetch</span>(partner_id, retries=<span class="nu">3</span>)</span><span class="line">    clean    = <span class="fn">validate</span>(raw, schema=RULES[partner_id])</span><span class="line">    affected = db.<span class="fn">upsert</span>(<span class="st">&quot;stg_products&quot;</span>, clean, key=<span class="st">&quot;sku&quot;</span>)</span><span class="line">    <span class="kw">return</span> affected</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section section-ink" id="experience" aria-labelledby="experience-title">
         <div class="section-inner">
-          <div class="section-heading split">
+          <div class="section-heading split" data-reveal>
             <div>
               <p class="eyebrow">Experience</p>
               <h2 id="experience-title">A path from analysis into ownership.</h2>
@@ -160,7 +207,7 @@
             </p>
           </div>
           <div class="timeline">
-            <article class="role">
+            <article class="role" data-reveal>
               <div class="role-meta">
                 <p>Dec 2024 - present</p>
                 <span>Lisbon, hybrid</span>
@@ -176,7 +223,7 @@
                 </ul>
               </div>
             </article>
-            <article class="role">
+            <article class="role" data-reveal style="--delay: 0.1s">
               <div class="role-meta">
                 <p>Oct 2022 - Nov 2024</p>
                 <span>Portugal, remote</span>
@@ -192,7 +239,7 @@
                 </ul>
               </div>
             </article>
-            <article class="role compact-role">
+            <article class="role compact-role" data-reveal style="--delay: 0.2s">
               <div class="role-meta">
                 <p>2020 - 2022</p>
                 <span>Remote</span>
@@ -206,7 +253,7 @@
                 </p>
               </div>
             </article>
-            <article class="role compact-role">
+            <article class="role compact-role" data-reveal style="--delay: 0.3s">
               <div class="role-meta">
                 <p>2018 - 2020</p>
                 <span>Lisbon</span>
@@ -225,14 +272,14 @@
 
       <section class="section" id="skills" aria-labelledby="skills-title">
         <div class="section-inner skill-layout">
-          <div class="section-heading sticky-heading">
+          <div class="section-heading sticky-heading" data-reveal>
             <p class="eyebrow dark">Stack</p>
             <h2 id="skills-title">Tools I use to make data usable.</h2>
             <p>
               A compact mix of engineering, analytics, and delivery skills from the roles above.
             </p>
           </div>
-          <div class="skill-panel">
+          <div class="skill-panel" data-reveal style="--delay: 0.1s">
             <div class="skill-cluster">
               <h3>Core</h3>
               <div class="tags">
@@ -274,10 +321,10 @@
       </section>
 
       <section class="section contact-band" id="contact" aria-labelledby="contact-title">
-        <div class="section-inner contact-grid">
+        <div class="section-inner contact-grid" data-reveal>
           <div>
             <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">Let’s talk about data flows, integrations, and automation.</h2>
+            <h2 id="contact-title">Let's talk about data flows, integrations, and automation.</h2>
           </div>
           <div class="contact-actions">
             <a class="contact-link" href="mailto:andrefbmonteiro@gmail.com">
