@@ -535,7 +535,7 @@ h3 {
   padding: 7px 11px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: var(--teal-dark);
+  color: var(--ink);
   background: rgba(15, 118, 110, 0.08);
   font-weight: 720;
 }
@@ -822,6 +822,18 @@ h3 {
 
 [data-theme="dark"] .section-terminal {
   background: var(--paper-2);
+}
+
+[data-theme="dark"] .site-header.is-scrolled {
+  background: rgba(17, 22, 20, 0.92);
+  color: var(--chalk);
+  box-shadow: 0 1px 0 rgba(248, 251, 245, 0.08);
+}
+
+[data-theme="dark"] .tags span {
+  color: var(--chalk);
+  background: rgba(15, 118, 110, 0.18);
+  border-color: rgba(15, 118, 110, 0.3);
 }
 
 /* ── Dark mode toggle ─────────────────────────────────────────── */
