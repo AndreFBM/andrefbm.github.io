@@ -3,29 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>André Monteiro | Data Engineer</title>
+    <title>André Monteiro — Data Engineer</title>
     <meta
       name="description"
-      content="André Monteiro is a Data Engineer focused on Python, SQL, ETL pipelines, integrations, APIs, FTP, and operational automation."
+      content="André Monteiro is a Lisbon-based Data Engineer building integrations, ETL pipelines, internal APIs and partner tools with Python and SQL."
     />
-    <meta property="og:title" content="André Monteiro | Data Engineer" />
+    <meta name="theme-color" content="#FFF5D9" data-theme-color />
+    <meta property="og:title" content="André Monteiro — Data Engineer" />
     <meta
       property="og:description"
-      content="Python, SQL, ETL pipelines, partner integrations, and operational data flows."
+      content="Integrations, pipelines, internal APIs and partner tools, built with Python and SQL."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://andrefbm.github.io/assets/hero-data-lisbon.png" />
+    <meta property="og:image" content="https://andrefbm.github.io/assets/og-card.png" />
     <meta property="og:url" content="https://andrefbm.github.io" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600;700&display=swap"
+    />
     <link rel="stylesheet" href="styles.css" />
-    <!-- Prevent dark-mode flash -->
     <script>
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
-      } catch (e) {}
+        d.setAttribute('data-theme', t);
+      })();
     </script>
     <script defer src="script.js"></script>
     <script type="application/ld+json">
@@ -34,326 +45,576 @@
         "@type": "Person",
         "name": "André Monteiro",
         "jobTitle": "Data Engineer",
+        "worksFor": { "@type": "Organization", "name": "Ask-to-Print" },
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Lisbon",
           "addressCountry": "Portugal"
         },
         "email": "mailto:andrefbmonteiro@gmail.com",
+        "url": "https://andrefbm.github.io",
         "sameAs": [
           "https://www.linkedin.com/in/andrefbmonteiro",
           "https://github.com/AndreFBM"
         ],
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Instituto Superior Técnico" },
         "knowsAbout": [
           "Python",
           "SQL",
           "ETL",
           "Data integrations",
           "APIs",
-          "FTP",
-          "Power BI",
-          "Automation"
+          "FastAPI",
+          "Automation",
+          "Power BI"
         ]
       }
     </script>
   </head>
   <body>
-    <div class="progress-bar" data-progress aria-hidden="true"></div>
+    <div class="progress" data-progress aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header" data-header>
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="André Monteiro home">
-          <span class="brand-mark">AM</span>
-          <span>André Monteiro</span>
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="André Monteiro, back to top">
+          <span class="brand-mark" aria-hidden="true">am<i></i></span>
+          <span class="brand-name">André Monteiro</span>
         </a>
         <div class="nav-links">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+          <a href="#work" data-nav>Work</a>
+          <a href="#approach" data-nav>Approach</a>
+          <a href="#experience" data-nav>Experience</a>
+          <a href="#stack" data-nav>Stack</a>
+          <a href="#contact" data-nav>Contact</a>
         </div>
-        <button
-          class="dark-toggle"
-          data-dark-toggle
-          type="button"
-          aria-label="Switch to dark mode"
-          aria-pressed="false"
-        >
-          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 17a5 5 0 100-10 5 5 0 000 10zm0-13a1 1 0 011 1v1a1 1 0 11-2 0V5a1 1 0 011-1zm0 14a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.636 6.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zm12.02 10.607a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 12a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm14 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM6.343 15.757a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zm10.607-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0z"/>
-          </svg>
-        </button>
+        <div class="nav-tools">
+          <button class="cmdk-btn" type="button" data-palette-open aria-haspopup="dialog">
+            <span class="cmdk-label">Jump to</span>
+            <kbd data-kbd>Ctrl K</kbd>
+          </button>
+          <button
+            class="theme-btn"
+            type="button"
+            data-theme-toggle
+            aria-label="Switch to dark mode"
+            aria-pressed="false"
+          >
+            <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.5" />
+              <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" />
+            </svg>
+          </button>
+        </div>
       </nav>
     </header>
 
     <main id="main">
+      <!-- ───────────────────────── HERO ───────────────────────── -->
       <section class="hero" id="top" aria-labelledby="hero-title">
-        <picture class="hero-media">
-          <img
-            src="assets/hero-data-lisbon.png"
-            alt="Abstract data routes and system connections"
-            loading="eager"
-          />
-        </picture>
-        <div class="hero-scrim" aria-hidden="true"></div>
-        <canvas class="hero-canvas" data-hero-canvas aria-hidden="true"></canvas>
-        <div class="hero-inner">
-          <p class="eyebrow">Data Engineer</p>
-          <h1 id="hero-title">André Monteiro</h1>
-          <p class="hero-role">Data Engineer | Python & SQL | ETL & Integrations</p>
-          <p class="hero-copy">
-            I build the data paths that keep operations moving: Python, SQL, APIs, FTP, and
-            automation for teams that need partner data to arrive clean, checked, and usable.
+        <canvas class="hero-flow" data-flow aria-hidden="true"></canvas>
+
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs>
+              <path id="ring" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" />
+            </defs>
+            <circle class="badge-bg" cx="100" cy="100" r="97" />
+            <text class="badge-text">
+              <textPath href="#ring" textLength="462" lengthAdjust="spacing">
+                DATA ✺ PIPELINES ✺ APIS ✺ AUTOMATION ✺
+              </textPath>
+            </text>
+          </svg>
+          <span class="badge-core">✺</span>
+        </div>
+
+        <div class="wrap hero-inner">
+          <p class="kicker">
+            <span class="pulse" aria-hidden="true"></span>
+            Data Engineer · Lisbon · Python &amp; SQL
           </p>
-          <div class="hero-actions" aria-label="Primary actions">
-            <a class="button button-primary" href="assets/Andre_Monteiro_CV.pdf" target="_blank" rel="noopener noreferrer">
-              Download CV
-            </a>
-            <a class="button button-secondary" href="mailto:andrefbmonteiro@gmail.com">
-              Email André
-            </a>
-            <a class="button button-secondary" href="https://github.com/AndreFBM" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          </div>
-          <dl class="signal-row" aria-label="Career signals">
-            <div>
-              <dt>Current</dt>
-              <dd>Ask-to-Print</dd>
-            </div>
-            <div>
-              <dt>Built</dt>
-              <dd><span data-counter="20" data-counter-suffix="+">20+</span> ETL pipelines</dd>
-            </div>
-            <div>
-              <dt>Integrated</dt>
-              <dd><span data-counter="15" data-counter-suffix="+">15+</span> partners</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
 
-      <section class="section intro-band" aria-labelledby="intro-title">
-        <div class="section-inner intro-grid" data-reveal>
-          <div>
-            <p class="eyebrow dark">Profile</p>
-            <h2 id="intro-title">Practical data engineering for messy real-world systems.</h2>
-          </div>
-          <p class="large-text">
-            I focus on integrations, ETL pipelines, and automations that turn unreliable data
-            into something consistent and useful. I tend to own the full picture: how data gets in,
-            how it is validated, and whether the output is actually correct.
-          </p>
-        </div>
-      </section>
+          <h1 class="hero-title" id="hero-title" aria-label="André Monteiro">
+            <span class="ht-line" data-wave>André</span>
+            <span class="ht-line ht-line--2" data-wave>Monteiro<span class="ht-dot">.</span></span>
+          </h1>
 
-      <section class="section" id="work" aria-labelledby="work-title">
-        <div class="section-inner">
-          <div class="section-heading" data-reveal>
-            <p class="eyebrow dark">Operating Model</p>
-            <h2 id="work-title">Where I add leverage</h2>
-          </div>
-          <div class="flow-grid" aria-label="Data workflow strengths">
-            <article class="flow-card" data-reveal style="--delay: 0s">
-              <span class="flow-index">01</span>
-              <h3>Partner data intake</h3>
-              <p>API, FTP, and scraping workflows that fetch, sync, and normalize external data.</p>
-            </article>
-            <article class="flow-card" data-reveal style="--delay: 0.12s">
-              <span class="flow-index">02</span>
-              <h3>ETL with checks</h3>
-              <p>Python and SQL pipelines with validation rules, quality checks, and reliable updates.</p>
-            </article>
-            <article class="flow-card" data-reveal style="--delay: 0.24s">
-              <span class="flow-index">03</span>
-              <h3>Operational consistency</h3>
-              <p>Pricing and rule changes coordinated across systems so teams work from the same truth.</p>
-            </article>
+          <div class="hero-row">
+            <div class="hero-copy">
+              <p class="hero-lede">
+                I build the <em>pipes</em> between systems — integrations, pipelines and
+                internal tools that keep a print business moving. Lately, more software
+                than scripts.
+              </p>
+              <p class="hero-rotator">
+                <span class="mono-label">lately →</span>
+                <span class="rot-word" data-rotator aria-hidden="true">a desktop app for production partners</span>
+                <span class="sr-only">
+                  a desktop app for production partners, supplier ordering automation, an internal
+                  API, pricing engines and API test suites.
+                </span>
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn--primary" href="assets/Andre_Monteiro_CV.pdf" target="_blank" rel="noopener noreferrer">
+                  Download CV <span aria-hidden="true">↓</span>
+                </a>
+                <a class="btn" href="#work">See the work <span aria-hidden="true">→</span></a>
+                <a class="btn btn--ghost" href="https://github.com/AndreFBM" target="_blank" rel="noopener noreferrer">
+                  GitHub <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="agent-wrap">
+              <figure class="agent">
+                <span class="agent-sticker" aria-hidden="true">on autopilot</span>
+                <div class="agent-bar" aria-hidden="true">
+                  <span class="agent-dots"><i></i><i></i><i></i></span>
+                  <span>data-ops</span>
+                  <span class="agent-live">live</span>
+                </div>
+                <div class="agent-body" data-agent aria-hidden="true">
+                  <p class="a-line a-cmd" data-type><span class="a-ps">$</span> <span class="a-txt">python sync.py --suppliers all</span></p>
+                  <p class="a-line a-slow"><span class="a-bul">◆</span> fetch      <b>REST · FTP · browser checkout</b></p>
+                  <p class="a-line"><span class="a-bul">◆</span> validate   schema · business rules</p>
+                  <p class="a-line"><span class="a-bul">◆</span> upsert     stock → <b>23,964 rows</b></p>
+                  <p class="a-line"><span class="a-bul">◆</span> write-back <u>order history</u></p>
+                  <p class="a-line a-ok">  <b>✓</b> diff logged  <b>✓</b> run logged</p>
+                  <p class="a-line a-cmd" data-type><span class="a-ps">$</span> <span class="a-txt">pytest -q partner-shipping-app</span></p>
+                  <p class="a-line a-ok a-slow">  <b>✓</b> 307 passed  <b>✓</b> mypy --strict  <b>✓</b> ruff</p>
+                  <p class="a-line a-ok">  <b>✓</b> openapi contract  <b>✓</b> core coverage 100%</p>
+                  <p class="a-line"><span class="a-ship">✔ all green</span></p>
+                </div>
+                <figcaption>Illustrative run: a supplier stock sync, then the partner app's test suite.</figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section section-terminal" aria-labelledby="code-title">
-        <div class="section-inner terminal-layout">
-          <div data-reveal>
-            <p class="eyebrow dark">In practice</p>
-            <h2 id="code-title">How data moves.</h2>
+      <!-- ───────────────────────── BANDS ───────────────────────── -->
+      <div class="bands" aria-hidden="true">
+        <div class="band band--violet">
+          <div class="band-track">
+            <span>Fetch</span><b>✺</b><span>Validate</span><b>✺</b><span>Load</span><b>✺</b><span>Automate</span><b>✺</b><span>Ship</span><b>✺</b><span>Integrations</span><b>✺</b><span>Pipelines</span><b>✺</b><span>APIs</span><b>✺</b>
+            <span>Fetch</span><b>✺</b><span>Validate</span><b>✺</b><span>Load</span><b>✺</b><span>Automate</span><b>✺</b><span>Ship</span><b>✺</b><span>Integrations</span><b>✺</b><span>Pipelines</span><b>✺</b><span>APIs</span><b>✺</b>
+          </div>
+        </div>
+        <div class="band band--cherry">
+          <div class="band-track">
+            <span>Python</span><b>✺</b><span>T-SQL</span><b>✺</b><span>FastAPI</span><b>✺</b><span>PySide6</span><b>✺</b><span>Selenium</span><b>✺</b><span>Playwright</span><b>✺</b><span>AWS S3</span><b>✺</b><span>pytest</span><b>✺</b><span>Power BI</span><b>✺</b><span>SQL Server</span><b>✺</b>
+            <span>Python</span><b>✺</b><span>T-SQL</span><b>✺</b><span>FastAPI</span><b>✺</b><span>PySide6</span><b>✺</b><span>Selenium</span><b>✺</b><span>Playwright</span><b>✺</b><span>AWS S3</span><b>✺</b><span>pytest</span><b>✺</b><span>Power BI</span><b>✺</b><span>SQL Server</span><b>✺</b>
+          </div>
+        </div>
+      </div>
+
+      <!-- ───────────────────────── ABOUT ───────────────────────── -->
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="wrap about-grid">
+          <h2 class="display" id="about-title" data-reveal>
+            From messy partner data to <em>shipped software.</em>
+          </h2>
+          <div class="about-copy" data-reveal style="--d: 0.12s">
             <p>
-              Fetch, validate, load. Every partner sync follows the same contract — clean intake,
-              explicit rules, reliable writes.
+              I'm a <strong>Data Engineer at Ask-to-Print</strong>, a web-to-print company where
+              every order travels through a network of suppliers and production partners. My job
+              is to make that network run on data: integrations, pipelines, internal APIs and the
+              tools partners use every day.
+            </p>
+            <p>
+              This year the work grew from scripts into products: a desktop app, an internal API,
+              test suites that try to break things. The job is still the full picture:
+              <strong>how data gets in, how it's checked, and whether the output is actually right.</strong>
             </p>
           </div>
-          <div class="terminal" data-reveal data-terminal style="--delay: 0.14s">
-            <div class="terminal-bar" aria-hidden="true">
-              <span></span><span></span><span></span>
-              <span class="terminal-title">sync_partner.py</span>
-            </div>
-            <div class="terminal-body" role="img" aria-label="Python ETL code example">
-              <span class="line"><span class="cm"># fetch &#x2192; validate &#x2192; load in one clean pass</span></span><span class="line"><span class="kw">def</span> <span class="fn">sync_partner</span>(partner_id: <span class="bi">str</span>) -&gt; <span class="bi">int</span>:</span><span class="line">    raw      = api_client.<span class="fn">fetch</span>(partner_id, retries=<span class="nu">3</span>)</span><span class="line">    clean    = <span class="fn">validate</span>(raw, schema=RULES[partner_id])</span><span class="line">    affected = db.<span class="fn">upsert</span>(<span class="st">&quot;stg_products&quot;</span>, clean, key=<span class="st">&quot;sku&quot;</span>)</span><span class="line">    <span class="kw">return</span> affected</span>
-            </div>
+        </div>
+
+        <ul class="wrap stats" aria-label="By the numbers">
+          <li class="stat" data-reveal>
+            <span class="stat-num"><span data-counter="10">10</span><span class="plus">+</span></span>
+            <p>supplier integrations, via APIs and browser automation</p>
+          </li>
+          <li class="stat stat--violet" data-reveal style="--d: 0.08s">
+            <span class="stat-num"><span data-counter="300">300</span><span class="plus">+</span></span>
+            <p>automated tests guarding the partner shipping app</p>
+          </li>
+          <li class="stat" data-reveal style="--d: 0.16s">
+            <span class="stat-num"><span data-counter="20">20</span><span class="plus">+</span></span>
+            <p>ETL pipelines built and maintained in SQL Server</p>
+          </li>
+          <li class="stat stat--ink" data-reveal style="--d: 0.24s">
+            <span class="stat-num"><span data-counter="15">15</span><span class="plus">+</span></span>
+            <p>partner data integrations led end to end</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ───────────────────────── WORK ───────────────────────── -->
+      <section class="section work" id="work" aria-labelledby="work-title">
+        <div class="wrap">
+          <header class="sec-head" data-reveal>
+            <p class="tag-label">// 2026, so far</p>
+            <h2 class="display" id="work-title">Things I <em>shipped</em> this year.</h2>
+            <p class="sec-sub">
+              Most of it lives in private repos at work, so here's the shape of each project
+              rather than the source.
+            </p>
+          </header>
+
+          <div class="bento">
+            <article class="card card--violet card--feature" data-reveal>
+              <div class="card-top">
+                <span class="chip">Flagship</span>
+                <span>v0.1.13 · Windows</span>
+              </div>
+              <h3 class="feature-title">Partner Shipping Platform</h3>
+              <p>
+                A desktop app production partners use to see what's due, print shipping labels
+                and export the daily carrier manifest, backed by a gateway API and an internal
+                admin panel. Built spec-first, with every trade-off recorded in a decision log.
+              </p>
+              <div
+                class="arch"
+                role="img"
+                aria-label="Architecture: the desktop app talks only to the gateway API over HTTPS with a token; the gateway reaches orders, the shipping API and storage."
+              >
+                <span class="node">Desktop app</span>
+                <span class="wire"><i>HTTPS · JWT</i></span>
+                <span class="node node--core">Gateway API</span>
+                <span class="wire"></span>
+                <span class="node-stack">
+                  <span class="node">Orders</span>
+                  <span class="node">Shipping API</span>
+                  <span class="node">S3</span>
+                </span>
+              </div>
+              <ul class="facts">
+                <li><b>300+</b> tests</li>
+                <li><b>100%</b> core coverage</li>
+                <li><b>0</b> secrets in the client</li>
+                <li><b>PT/EN</b> light &amp; dark</li>
+              </ul>
+              <div class="train" role="img" aria-label="Fourteen releases so far, from v0.1.0 to v0.1.13">
+                <span class="train-label">v0.1.0</span>
+                <span class="train-track" aria-hidden="true">
+                  <i style="--n: 0"></i><i style="--n: 1"></i><i style="--n: 2"></i><i style="--n: 3"></i><i style="--n: 4"></i><i style="--n: 5"></i><i style="--n: 6"></i><i style="--n: 7"></i><i style="--n: 8"></i><i style="--n: 9"></i><i style="--n: 10"></i><i style="--n: 11"></i><i style="--n: 12"></i><i style="--n: 13"></i>
+                </span>
+                <span>v0.1.13</span>
+              </div>
+              <ul class="tags">
+                <li>PySide6</li><li>FastAPI</li><li>Nuitka</li><li>OpenAPI</li><li>pytest</li><li>SQL Server</li>
+              </ul>
+            </article>
+
+            <article class="card card--ink" data-reveal style="--d: 0.08s">
+              <p class="card-big">10+ suppliers.<br />One pipeline.</p>
+              <p>
+                Ordering, stock and price feeds: REST APIs where suppliers have them,
+                Selenium-driven checkouts where they don't. Every run is logged and written back
+                to the order history.
+              </p>
+              <ul class="tags"><li>Python</li><li>Selenium</li><li>REST</li><li>T-SQL</li></ul>
+            </article>
+
+            <article class="card" data-reveal style="--d: 0.16s">
+              <span class="card-glyph" aria-hidden="true">{ }</span>
+              <h3>Internal platform API</h3>
+              <p>
+                FastAPI service for order files on S3, job-ticket PDFs, ZIP bundles and partner
+                webhooks. Scoped API keys; runs as a Windows service with auto-renewed TLS.
+              </p>
+              <ul class="tags"><li>FastAPI</li><li>WeasyPrint</li><li>AWS S3</li><li>pyodbc</li></ul>
+            </article>
+
+            <article class="card" data-reveal>
+              <span class="card-glyph" aria-hidden="true">✓✓</span>
+              <h3>Shipping API test battery</h3>
+              <p>
+                A pytest suite that tries to break a GraphQL shipment API: Hypothesis-generated
+                inputs, concurrency races, cleanup checks and a read-only Locust load profile.
+              </p>
+              <ul class="tags"><li>pytest</li><li>Hypothesis</li><li>GraphQL</li><li>Locust</li><li>Postman</li></ul>
+            </article>
+
+            <article class="card" data-reveal style="--d: 0.08s">
+              <span class="card-glyph" aria-hidden="true">€↘</span>
+              <h3>Smart pricing engine</h3>
+              <p>
+                Pulls price candidates from the storefront API, picks each product's default
+                quantity by unit-price rules, then publishes start prices and sort order. Excel
+                and VBA front-ends with full change history.
+              </p>
+              <ul class="tags"><li>Python</li><li>T-SQL</li><li>VBA</li></ul>
+            </article>
+
+            <article class="card" data-reveal style="--d: 0.16s">
+              <span class="card-glyph" aria-hidden="true">&lt;/&gt;</span>
+              <h3>Storefront quality &amp; SEO</h3>
+              <p>
+                Product JSON-LD generated in T-SQL, Google Merchant feeds synced from SQL, and a
+                Playwright crawler that sweeps the sitemap for console errors and broken requests.
+              </p>
+              <ul class="tags"><li>Playwright</li><li>JSON-LD</li><li>Google APIs</li><li>Node.js</li></ul>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-ink" id="experience" aria-labelledby="experience-title">
-        <div class="section-inner">
-          <div class="section-heading split" data-reveal>
+      <!-- ───────────────────────── APPROACH ───────────────────────── -->
+      <section class="section approach" id="approach" aria-labelledby="approach-title">
+        <div class="wrap">
+          <header class="sec-head sec-head--split" data-reveal>
             <div>
-              <p class="eyebrow">Experience</p>
-              <h2 id="experience-title">A path from analysis into ownership.</h2>
+              <p class="tag-label">// how I work</p>
+              <h2 class="display" id="approach-title">Write it down.<br /><em>Ship it small.</em></h2>
             </div>
             <p>
-              The through-line is turning scattered data and requirements into dependable delivery.
+              My bigger builds start as a written spec, not a script, and every trade-off ends
+              up somewhere I can point to. Boring releases are the goal.
             </p>
-          </div>
-          <div class="timeline">
-            <article class="role" data-reveal>
-              <div class="role-meta">
-                <p>Dec 2024 - present</p>
-                <span>Lisbon, hybrid</span>
-              </div>
-              <div class="role-body">
-                <h3>Data Engineer</h3>
-                <p class="company">Ask-to-Print</p>
-                <ul>
-                  <li>Own integrations, automation, website changes, and operational tooling.</li>
-                  <li>Build Python pipelines for extraction, transformation, and operational updates.</li>
-                  <li>Implement pricing and operational rules across 5+ systems.</li>
-                  <li>Coordinate website delivery with external developers through release QA.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="role" data-reveal style="--delay: 0.1s">
-              <div class="role-meta">
-                <p>Oct 2022 - Nov 2024</p>
-                <span>Portugal, remote</span>
-              </div>
-              <div class="role-body">
-                <h3>Data Analyst</h3>
-                <p class="company">BIZAY</p>
-                <ul>
-                  <li>Built and maintained 20+ ETL pipelines into SQL Server.</li>
-                  <li>Improved SQL Server performance through query and model refinements.</li>
-                  <li>Developed Python automations for APIs, FTP, scraping, and operational updates.</li>
-                  <li>Led technical data integrations with 15+ partners.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="role compact-role" data-reveal style="--delay: 0.2s">
-              <div class="role-meta">
-                <p>2020 - 2022</p>
-                <span>Remote</span>
-              </div>
-              <div class="role-body">
-                <h3>Social Media Specialist</h3>
-                <p class="company">G2 Esports</p>
+          </header>
+
+          <div class="approach-grid">
+            <ol class="loop">
+              <li class="step" data-reveal>
+                <span class="step-n">01</span>
+                <h3>Spec it</h3>
                 <p>
-                  Paid social campaigns and analytics for Turkish and Brazilian markets, including
-                  performance reporting for stakeholders.
+                  Context, stack and non-negotiables, written down first. The partner app's brief
+                  was a 21&nbsp;kB document before a single line of code existed.
+                </p>
+              </li>
+              <li class="step" data-reveal style="--d: 0.08s">
+                <span class="step-n">02</span>
+                <h3>Ship small</h3>
+                <p>
+                  Small, versioned increments with modern tooling, AI-assisted where it helps:
+                  v0.1.0 to v0.1.13 so far.
+                </p>
+              </li>
+              <li class="step" data-reveal style="--d: 0.16s">
+                <span class="step-n">03</span>
+                <h3>Decide on paper</h3>
+                <p>
+                  Every trade-off lands in a decision log. If I can't explain it, it doesn't
+                  ship.
+                </p>
+              </li>
+              <li class="step" data-reveal style="--d: 0.24s">
+                <span class="step-n">04</span>
+                <h3>Verify</h3>
+                <p>
+                  Tests, strict typing, linting, the API contract and light/dark screenshots gate
+                  every release.
+                </p>
+              </li>
+            </ol>
+
+            <aside class="doc" data-reveal style="--d: 0.2s" aria-label="Excerpt from a decision log">
+              <div class="doc-bar"><span>DECISIONS.md</span><span>excerpt · translated</span></div>
+              <div class="doc-body">
+                <p class="h">## v0.1.6 — Box permissions per partner</p>
+                <p class="li">One <code>can_edit_boxes</code> flag controls quantity, weight and dimensions. Admin-only, every change audited.</p>
+                <p class="li">The server re-validates every box atomically before creating a shipment, including requests from old or tampered clients.</p>
+                <p class="li">Restricted clients hide editing and never send locally changed values.</p>
+                <p class="li">A permission refusal removes only the rejected local operation, then reloads the list.</p>
+                <p class="doc-ok">
+                  <b>Validation</b> 307 tests passed · ruff · mypy · OpenAPI ✓ · core coverage 100% ·
+                  Qt screenshots in light &amp; dark
                 </p>
               </div>
-            </article>
-            <article class="role compact-role" data-reveal style="--delay: 0.3s">
-              <div class="role-meta">
-                <p>2018 - 2020</p>
-                <span>Lisbon</span>
-              </div>
-              <div class="role-body">
-                <h3>Junior Data Analyst</h3>
-                <p class="company">Fujitsu</p>
-                <p>
-                  Power BI and MySQL reporting for incident, alert, SLA, and escalation trends.
-                </p>
-              </div>
-            </article>
+            </aside>
           </div>
         </div>
       </section>
 
-      <section class="section" id="skills" aria-labelledby="skills-title">
-        <div class="section-inner skill-layout">
-          <div class="section-heading sticky-heading" data-reveal>
-            <p class="eyebrow dark">Stack</p>
-            <h2 id="skills-title">Tools I use to make data usable.</h2>
-            <p>
-              A compact mix of engineering, analytics, and delivery skills from the roles above.
+      <!-- ───────────────────────── EXPERIENCE ───────────────────────── -->
+      <section class="section exp" id="experience" aria-labelledby="exp-title">
+        <div class="wrap exp-grid">
+          <header class="sec-head sticky" data-reveal>
+            <p class="tag-label">$ git log --career</p>
+            <h2 class="display" id="exp-title">From analysis into <em>ownership.</em></h2>
+            <p class="sec-sub">
+              The through-line: turning scattered data and requirements into things that run on
+              their own.
             </p>
-          </div>
-          <div class="skill-panel" data-reveal style="--delay: 0.1s">
-            <div class="skill-cluster">
-              <h3>Core</h3>
-              <div class="tags">
-                <span>Python</span>
-                <span>SQL</span>
-                <span>SSIS</span>
-                <span>ETL</span>
-                <span>Data Quality</span>
-              </div>
+          </header>
+
+          <ol class="gitlog">
+            <li class="commit commit--head" data-reveal>
+              <span class="commit-dot" aria-hidden="true"></span>
+              <p class="commit-meta">
+                <code class="hash">a9c41f0</code>
+                <span class="ref ref--head">HEAD → main</span>
+                <span>Dec 2024 — now · Lisbon, hybrid</span>
+              </p>
+              <h3>Data Engineer <span>@ Ask-to-Print</span></h3>
+              <ul>
+                <li>Own end-to-end technical execution: integrations, automation, internal tools and website changes.</li>
+                <li>Built a partner shipping platform (desktop app, gateway API and admin panel), from written spec to Windows installer.</li>
+                <li>Automated ordering, stock and price feeds with 10+ suppliers through REST APIs and browser automation.</li>
+                <li>Run an internal FastAPI service for order files, job-ticket PDFs and partner webhooks.</li>
+                <li>Design pricing and operational rules across 5+ systems, with audit history and API-sourced price selection.</li>
+                <li>Coordinate website delivery with external developers, from requirements through release QA.</li>
+              </ul>
+            </li>
+            <li class="commit" data-reveal>
+              <span class="commit-dot" aria-hidden="true"></span>
+              <p class="commit-meta">
+                <code class="hash">7e2d0b3</code>
+                <span>Oct 2022 — Nov 2024 · Portugal, remote</span>
+              </p>
+              <h3>Data Analyst <span>@ BIZAY</span></h3>
+              <ul>
+                <li>Built and maintained 20+ ETL pipelines into SQL Server, with validation rules and data quality checks.</li>
+                <li>Improved SQL Server performance through query optimisation and data model refinements.</li>
+                <li>Developed Python automations for APIs, FTP, web scraping and operational updates.</li>
+                <li>Led technical data integrations with 15+ partners.</li>
+              </ul>
+            </li>
+            <li class="commit" data-reveal>
+              <span class="commit-dot" aria-hidden="true"></span>
+              <p class="commit-meta">
+                <code class="hash">3f81c6a</code>
+                <span>2020 — 2022 · Remote</span>
+              </p>
+              <h3>Social Media Specialist <span>@ G2 Esports</span></h3>
+              <p class="msg">
+                Paid social campaigns and analytics for the Turkish and Brazilian markets, with
+                performance reporting for stakeholders.
+              </p>
+            </li>
+            <li class="commit" data-reveal>
+              <span class="commit-dot" aria-hidden="true"></span>
+              <p class="commit-meta">
+                <code class="hash">c05e9d2</code>
+                <span>2018 — 2020 · Lisbon</span>
+              </p>
+              <h3>Junior Data Analyst <span>@ Fujitsu</span></h3>
+              <p class="msg">Power BI and MySQL reporting on incidents, alerts, SLA compliance and escalation trends.</p>
+            </li>
+            <li class="commit commit--root" data-reveal>
+              <span class="commit-dot" aria-hidden="true"></span>
+              <p class="commit-meta">
+                <code class="hash">0b7f3e1</code>
+                <span class="ref ref--tag">tag: msc</span>
+                <span>2013 — 2019 · Lisbon</span>
+              </p>
+              <h3>MSc &amp; BSc, Computer Science and Engineering <span>@ Instituto Superior Técnico</span></h3>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── STACK ───────────────────────── -->
+      <section class="section stack" id="stack" aria-labelledby="stack-title">
+        <div class="wrap">
+          <header class="sec-head" data-reveal>
+            <p class="tag-label">requirements.txt</p>
+            <h2 class="display" id="stack-title">Tools I <em>reach for.</em></h2>
+          </header>
+          <div class="stack-grid">
+            <div class="stack-group" data-reveal>
+              <h3># languages</h3>
+              <ul class="pills"><li>Python</li><li>T-SQL</li><li>JavaScript</li><li>VBA</li><li>HTML/CSS</li></ul>
             </div>
-            <div class="skill-cluster">
-              <h3>Integrations</h3>
-              <div class="tags">
-                <span>APIs</span>
-                <span>FTP</span>
-                <span>Web scraping</span>
-                <span>Partner syncs</span>
-                <span>Operational rules</span>
-              </div>
+            <div class="stack-group" data-reveal style="--d: 0.06s">
+              <h3># apis &amp; backend</h3>
+              <ul class="pills"><li>FastAPI</li><li>Pydantic</li><li>httpx</li><li>REST</li><li>GraphQL</li><li>Webhooks</li></ul>
             </div>
-            <div class="skill-cluster">
-              <h3>Delivery</h3>
-              <div class="tags">
-                <span>Power BI</span>
-                <span>UIPath</span>
-                <span>Git</span>
-                <span>HTML</span>
-                <span>CSS</span>
-              </div>
+            <div class="stack-group stack-group--hl" data-reveal style="--d: 0.12s">
+              <h3># data</h3>
+              <ul class="pills"><li>SQL Server</li><li>MariaDB</li><li>SSIS</li><li>ETL</li><li>Power BI</li></ul>
             </div>
-            <div class="education-box">
-              <h3>Education</h3>
-              <p>MSc, Computer Science and Engineering</p>
-              <p>BSc, Computer Science and Engineering</p>
-              <span>Instituto Superior Técnico</span>
+            <div class="stack-group" data-reveal style="--d: 0.18s">
+              <h3># workflow</h3>
+              <ul class="pills"><li>Spec-first</li><li>Decision logs</li><li>Code review</li><li>AI-assisted dev</li></ul>
+            </div>
+            <div class="stack-group" data-reveal>
+              <h3># automation</h3>
+              <ul class="pills"><li>Selenium</li><li>Playwright</li><li>UiPath</li><li>FTP</li><li>Windows services</li></ul>
+            </div>
+            <div class="stack-group" data-reveal style="--d: 0.06s">
+              <h3># quality</h3>
+              <ul class="pills"><li>pytest</li><li>Hypothesis</li><li>mypy</li><li>ruff</li><li>Postman</li><li>Locust</li></ul>
+            </div>
+            <div class="stack-group" data-reveal style="--d: 0.12s">
+              <h3># desktop &amp; docs</h3>
+              <ul class="pills"><li>PySide6</li><li>Nuitka</li><li>Inno Setup</li><li>WeasyPrint</li><li>ReportLab</li></ul>
+            </div>
+            <div class="stack-group" data-reveal style="--d: 0.18s">
+              <h3># cloud &amp; ops</h3>
+              <ul class="pills"><li>AWS S3</li><li>IIS</li><li>TLS / ACME</li><li>Git</li><li>Google APIs</li></ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section contact-band" id="contact" aria-labelledby="contact-title">
-        <div class="section-inner contact-grid" data-reveal>
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title">Let's talk about data flows, integrations, and automation.</h2>
-          </div>
-          <div class="contact-actions">
-            <a class="contact-link" href="mailto:andrefbmonteiro@gmail.com">
-              <span>Email</span>
-              <strong>andrefbmonteiro@gmail.com</strong>
+      <!-- ───────────────────────── CONTACT ───────────────────────── -->
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="wrap">
+          <p class="contact-label">// contact</p>
+          <h2 class="contact-title" id="contact-title" data-reveal>
+            Got messy data?<br /><em>Let's make it flow.</em>
+          </h2>
+          <button class="email-big" type="button" data-copy="andrefbmonteiro@gmail.com">
+            <span class="email-addr">andrefbmonteiro@gmail.com</span>
+            <span class="email-hint" data-copy-label>click to copy</span>
+          </button>
+          <div class="contact-cards">
+            <a class="ccard" href="mailto:andrefbmonteiro@gmail.com">
+              <span>email</span><strong>Say hello <i aria-hidden="true">↗</i></strong>
             </a>
-            <a class="contact-link" href="https://www.linkedin.com/in/andrefbmonteiro">
-              <span>LinkedIn</span>
-              <strong>andrefbmonteiro</strong>
+            <a class="ccard" href="https://www.linkedin.com/in/andrefbmonteiro" target="_blank" rel="noopener noreferrer">
+              <span>linkedin</span><strong>andrefbmonteiro <i aria-hidden="true">↗</i></strong>
             </a>
-            <a class="contact-link" href="https://github.com/AndreFBM">
-              <span>GitHub</span>
-              <strong>AndreFBM</strong>
+            <a class="ccard" href="https://github.com/AndreFBM" target="_blank" rel="noopener noreferrer">
+              <span>github</span><strong>AndreFBM <i aria-hidden="true">↗</i></strong>
             </a>
-            <button class="contact-link copy-email" type="button" data-copy="andrefbmonteiro@gmail.com">
-              <span>Quick action</span>
-              <strong data-copy-label>Copy email</strong>
-            </button>
+            <a class="ccard" href="assets/Andre_Monteiro_CV.pdf" target="_blank" rel="noopener noreferrer">
+              <span>cv · pdf</span><strong>Download <i aria-hidden="true">↓</i></strong>
+            </a>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>© <span data-year></span> André Monteiro</p>
-      <p>Portuguese native · English full professional proficiency</p>
+      <div class="wrap footer-row">
+        <p>© <span data-year>2026</span> André Monteiro · Lisbon</p>
+        <p>Portuguese (native) · English (full professional)</p>
+        <p>Press <kbd data-kbd>Ctrl K</kbd> to jump anywhere</p>
+      </div>
+      <p class="footer-word" aria-hidden="true">monteiro</p>
     </footer>
+
+    <dialog class="palette" data-palette aria-label="Command palette">
+      <div class="palette-head">
+        <span aria-hidden="true">⌕</span>
+        <input
+          type="text"
+          data-palette-input
+          placeholder="Jump to a section or run a command…"
+          autocomplete="off"
+          spellcheck="false"
+          role="combobox"
+          aria-expanded="true"
+          aria-controls="palette-list"
+          aria-autocomplete="list"
+          aria-label="Search commands"
+        />
+        <kbd>esc</kbd>
+      </div>
+      <ul class="palette-list" id="palette-list" role="listbox" data-palette-list></ul>
+      <p class="palette-foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> move</span>
+        <span><kbd>↵</kbd> run</span>
+        <span>try “rain”</span>
+      </p>
+    </dialog>
   </body>
 </html>

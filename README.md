@@ -1,22 +1,27 @@
-# André Monteiro CV Site
+# André Monteiro — personal site
 
-A static personal curriculum website built from the current CV.
+Static personal site and CV, served by GitHub Pages at https://andrefbm.github.io.
+
+No build step and no dependencies: plain HTML, CSS and JavaScript. Fonts come from
+Google Fonts (Bricolage Grotesque, Instrument Serif, JetBrains Mono).
 
 ## Files
 
-- `index.html` - the site content
-- `styles.css` - responsive visual design
-- `script.js` - small header and copy-email interactions
-- `assets/Andre_Monteiro_CV.pdf` - downloadable CV
-- `assets/hero-data-lisbon.png` - custom hero image
+- `index.html` — all content
+- `styles.css` — design tokens (sugar violet `#9470DB`, vanilla cream `#FFF5D9`,
+  cherry red `#E72D49`), light/dark themes, layout
+- `script.js` — theme toggle, hero animations, terminal replay, command palette (Ctrl/⌘ K)
+- `404.html` — standalone not-found page
+- `assets/Andre_Monteiro_CV.pdf` — downloadable CV
+- `assets/og-card.png` — 1200×630 social preview image
+- `assets/favicon.svg` — favicon
 
-## GitHub Pages
+## Editing content
 
-1. Create a repository, for example `andre-cv-site`.
-2. Add these files to the repository root.
-3. Push to GitHub.
-4. In GitHub, open `Settings` -> `Pages`.
-5. Set `Source` to `Deploy from a branch`.
-6. Select the `main` branch and `/root`, then save.
+Projects, experience and stack all live in `index.html`. The rotating phrases under the
+hero are in `script.js` (`phrases`), and the command palette entries are in `actions`.
 
-For a user site at `https://andrefbm.github.io`, name the repository `AndreFBM.github.io`.
+## Preview locally
+
+Open `index.html` in a browser, or run `python -m http.server` in this folder and visit
+http://localhost:8000.
